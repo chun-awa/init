@@ -11,14 +11,14 @@ for DEVICE in /sys/class/net/* ; do
     log_info "Found network device ${DEVICE##*/}"
     ip link set ${DEVICE##*/} up
     case ${DEVICE##*/} in
-    	lo)
-    		;;
-    	sit*)
-    		;;
-    	*)
-			printf "DHCP..."
+        lo)
+            ;;
+        sit*)
+            ;;
+        *)
+            printf "DHCP..."
             udhcpc -b -i ${DEVICE##*/} -s /etc/init.d/dhcp.sh >/dev/null 2>&1 &
-			progress $!
+            progress $!
             wait
             ;;
     esac
