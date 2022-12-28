@@ -1,0 +1,27 @@
+#!/bin/sh
+. /etc/init.d/rc.lib
+
+echo "${YELLOW}Welcome to Linux!${RESET}"
+log_info "Linux Kernel Version:$(uname -r)"
+
+log "Setting Hostname..."
+hostname -F /etc/hostname
+log "Starting Networking..."
+for DEVICE in /sys/class/net/* ; do
+    log_info "Found network device ${DEVICE##*/}"
+    ip link set ${DEVICE##*/} up
+    case ${DEVICE##*/} in
+    	lo)
+    		;;
+    	sit*)
+    		;;
+    	*)
+			printf "DHCP..."
+            udhcpc -b -i ${DEVICE##*/} -s /etc/init.d/dhcp.sh >/dev/null 2>&1 &
+			progress $!
+            wait
+            ;;
+    esac
+done
+
+log_info "Boot completed in $(cat /proc/uptime|cut -d ' ' -f 1)s"
