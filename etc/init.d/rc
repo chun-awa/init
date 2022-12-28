@@ -1,5 +1,6 @@
 #!/bin/sh
 . /etc/init.d/rc.lib
+. /etc/rc.conf
 
 echo "${YELLOW}Welcome to Linux!${RESET}"
 log_info "Linux Kernel Version:$(uname -r)"
@@ -21,3 +22,9 @@ for DEVICE in /sys/class/net/* ; do
 done
 
 log_info "Boot stage completed in $(cat /proc/uptime|cut -d ' ' -f 1)s"
+
+log "Starting Services..."
+for i in $SERVICES;do
+    /var/services/${i} start
+done
+
