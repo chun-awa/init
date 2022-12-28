@@ -5,22 +5,6 @@
 echo "${YELLOW}Welcome to Linux!${RESET}"
 log_info "Linux Kernel Version:$(uname -r)"
 
-log "Setting Hostname..."
-hostname -F /etc/hostname
-log "Starting Networking..."
-for DEVICE in /sys/class/net/* ; do
-    log_info "Found network device ${DEVICE##*/}"
-    ip link set ${DEVICE##*/} up
-    case ${DEVICE##*/} in
-        lo) ;;
-        sit*) ;;
-        *)
-            udhcpc -b -i ${DEVICE##*/} -s /etc/init.d/dhcp.sh
-            log "Started Network on ${DEVICE##*/}"
-            ;;
-    esac
-done
-
 log_info "Boot stage completed in $(cat /proc/uptime|cut -d ' ' -f 1)s"
 
 log "Starting Services..."
@@ -28,3 +12,4 @@ for i in $SERVICES;do
     /var/services/${i} start
 done
 
+log_info "Boot completed in $(cat /proc/uptime|cut -d ' ' -f 1)s"
