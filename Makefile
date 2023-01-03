@@ -5,10 +5,10 @@ all:
 install:
 	mkdir -p $(DESTDIR)
 	cp -f init $(DESTDIR)/init
-	mkdir -p $(DESTDIR)/etc/init.d
+	mkdir -p $(DESTDIR)/etc
 	cp -rf etc/init.d $(DESTDIR)/etc
 	cp -f etc/rc.conf $(DESTDIR)/etc
-	mkdir -p $(DESTDIR)/var/services
+	mkdir -p $(DESTDIR)/var
 	cp -rf var/services $(DESTDIR)/var
 
 uninstall:
