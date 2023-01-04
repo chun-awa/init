@@ -1,5 +1,5 @@
 #!/bin/sh
-. /etc/init.d/rc.lib
+. /lib/init/rc.lib
 . /etc/rc.conf
 if [ $$ -ne 1 ];then
     log_error "$0: must be run as PID 1"
