@@ -5,7 +5,18 @@
 echo "${YELLOW}Welcome to Linux!${RESET}"
 log_info "Linux Kernel Version:$(uname -r)"
 
-log_info "Boot stage completed in $(cat /proc/uptime|cut -d ' ' -f 1)s"
+log "Mounting pseudo filesystems..."
+mount -t devtmpfs dev /dev
+mount -t proc proc /proc
+mount -t sysfs sys /sys
+mkdir /dev/pts
+mkdir /dev/shm
+mount -t devpts devpts /dev/pts
+mount -t tmpfs tmpfs /dev/shm -o rw
+ln -s /proc/self/fd /dev/fd
+ln -s fd/0 /dev/stdin
+ln -s fd/1 /dev/stdout
+ln -s fd/2 /dev/stderr
 
 log "Starting Services..."
 for i in $SERVICES;do
