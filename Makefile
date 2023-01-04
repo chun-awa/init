@@ -4,7 +4,6 @@ all:
 
 install:
 	mkdir -p $(DESTDIR)
-	cp -f init $(DESTDIR)/init
 	mkdir -p $(DESTDIR)/etc
 	cp -f etc/rc.conf $(DESTDIR)/etc
 	mkdir -p $(DESTDIR)/var
@@ -18,6 +17,5 @@ uninstall:
 	rm -rf $(DESTDIR)/etc/init.d
 	rm -f $(DESTDIR)/etc/rc.conf
 	rm -rf $(DESTDIR)/var/services
-	rm -f $(DESTDIR)/init
 	rm -rf $(DESTDIR)/lib/init
 	rm -f $(DESTDIR)/bin/service
