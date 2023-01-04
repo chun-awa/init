@@ -1,5 +1,5 @@
 #!/bin/sh
-. /etc/init.d/rc.lib
+. /lib/init/rc.lib
 ip addr add $ip/$mask dev $interface
 [ "$router" ]&&ip route add default via $router dev $interface
 if [ "$ip" ];then

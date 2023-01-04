@@ -1,5 +1,5 @@
 #!/bin/sh
-. /etc/init.d/rc.lib
+. /lib/init/rc.lib
 
 case "${1}" in
     start)
