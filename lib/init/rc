@@ -2,7 +2,7 @@
 . /lib/init/rc.lib
 . /etc/rc.conf
 
-echo "${YELLOW}Welcome to Linux!${RESET}"
+echo "${YELLOW}Welcome to TinyLinux!${RESET}"
 log_info "Linux Kernel Version:$(uname -r)"
 
 log "Starting Services..."
