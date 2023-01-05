@@ -1,2 +1,2 @@
 # init
-init框架
+tinylinux使用的init框架
