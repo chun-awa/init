@@ -1,2 +1,0 @@
-#!/bin/sh
-/var/services/${1} ${2}
