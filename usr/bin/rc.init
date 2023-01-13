@@ -10,4 +10,4 @@ for i in $SERVICES;do
     "/var/services/${i}" start
 done
 
-log_info "Boot completed in $(cut -d ' ' -f 1</proc/uptime)s"
+log_info "Boot completed in $(cut -d ' ' -f 1 </proc/uptime)s"
