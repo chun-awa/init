@@ -5,9 +5,9 @@ case "${1}" in
     start)
         for i in $(seq 1 6);do
             log "Starting Getty on tty${i}..."
-            sh -c "while :;do getty 'tty${i}';done" &
+            sh -c "while :;do getty 115200 'tty${i}';done" &
         done
         log "Starting Getty on Serial..."
-        sh -c "while :;do getty ttyS0;done" &
+        sh -c "while :;do getty 38400 ttyS0;done" &
         ;;
 esac
