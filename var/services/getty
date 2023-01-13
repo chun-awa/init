@@ -1,0 +1,13 @@
+#!/bin/sh
+. /lib/init/rc.lib
+
+case "${1}" in
+    start)
+        for i in $(seq 1 6);do
+            log "Starting Getty on tty${i}..."
+            sh -c "while :;do getty 'tty${i}';done" &
+        done
+        log "Starting Getty on Serial..."
+        sh -c "while :;do getty ttyS0;done" &
+        ;;
+esac
