@@ -7,7 +7,7 @@ log_info "Linux Kernel Version:$(uname -r)"
 
 log "Starting Services..."
 for i in $SERVICES;do
-    /var/services/${i} start
+    "/var/services/${i}" start
 done
 
-log_info "Boot completed in $(cat /proc/uptime|cut -d ' ' -f 1)s"
+log_info "Boot completed in $(cut -d ' ' -f 1</proc/uptime)s"
