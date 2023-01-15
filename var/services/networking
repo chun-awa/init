@@ -12,7 +12,7 @@ case "${1}" in
                 lo) ;;
                 sit*) ;;
                 *)
-                    udhcpc -b -i ${DEVICE##*/} -s /var/services/dhcp &
+                    udhcpc -b -i ${DEVICE##*/} -s /var/services/dhcp > /dev/null 2>&1 &
                     ;;
             esac
         done
