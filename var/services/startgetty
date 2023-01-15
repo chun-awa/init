@@ -1,0 +1,8 @@
+#!/bin/sh
+. /lib/init/rc.lib
+for i in $(seq 1 6);do
+    log "Starting Getty on tty${i}..."
+    sh -c "while :;do getty 115200 tty${i};done" > /dev/null 2>&1 &
+done
+log "Starting Getty on Serial..."
+sh -c "while :;do getty 38400 ttyS0;done" > /dev/null 2>&1 &
