@@ -4,6 +4,7 @@
 case "${1}" in
     start)
         log "Starting Networking..."
+        ip l set dev lo up
         for DEVICE in /sys/class/net/*;do
             log_info "Found network device ${DEVICE##*/}"
             ip link set ${DEVICE##*/} up
@@ -11,8 +12,7 @@ case "${1}" in
                 lo) ;;
                 sit*) ;;
                 *)
-                    udhcpc -b -i ${DEVICE##*/} -s /var/services/dhcp
-                    log "Started Network on ${DEVICE##*/}"
+                    udhcpc -b -i ${DEVICE##*/} -s /var/services/dhcp &
                     ;;
             esac
         done
