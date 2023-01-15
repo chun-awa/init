@@ -3,6 +3,7 @@
 
 case "${1}" in
     start)
+        log "Starting Getty..."
         /var/services/startgetty &
         ;;
 esac
