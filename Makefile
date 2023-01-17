@@ -4,7 +4,7 @@ all:
 
 install:
 	mkdir -p $(DESTDIR)
-	cp -rf usr $(DESTDIR)
+	cp -rf bin $(DESTDIR)
 	cp -rf etc $(DESTDIR)
 	cp -rf var $(DESTDIR)
 	cp -rf lib $(DESTDIR)
