@@ -16,13 +16,4 @@ log_info(){
 log_error(){
     echo "${RED}*${RESET} ${WHITE}${1}${RESET}"
 }
-progress(){
-    while [ -e "/proc/${1}" ];do
-        for i in '|' '/' '-' '\';do
-            printf "${i}"
-            usleep 1000
-            printf "\033[D"
-        done
-    done
-    echo
-}
+
