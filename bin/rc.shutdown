@@ -1,6 +1,9 @@
 #!/bin/sh
 . /lib/init/rc.lib
 
+log "Saving random seed..."
+random_seed save
+
 log "Unmounting all filesystems..."
 umount -rat nosysfs,proc,devtmpfs,tmpfs
 

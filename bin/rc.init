@@ -11,6 +11,21 @@ fi
 echo "${YELLOW}Welcome to ${NAME}!${RESET}"
 log_info "Linux Kernel Version:$(uname -r)"
 
+log "Setting Hostname..."
+hostname -F /etc/hostname
+
+log "Starting Network on loopback device..."
+ip l set dev lo up
+
+log "Mounting filesystems..."
+mount -a
+
+log "Enabling swap..."
+swapon -a
+
+log "Seeding random..."
+random_seed load
+
 log "Starting Services..."
 for i in $SERVICES;do
     "/var/services/${i}" start
