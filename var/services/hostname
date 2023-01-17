@@ -1,9 +1,0 @@
-#!/bin/sh
-. /lib/init/rc.lib
-
-case "${1}" in
-    start)
-        log "Setting Hostname..."
-        hostname -F /etc/hostname
-        ;;
-esac
