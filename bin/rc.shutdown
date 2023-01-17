@@ -9,13 +9,13 @@ umount -rat nosysfs,proc,devtmpfs,tmpfs
 
 log "Disabling swap..."
 swapoff -a
-
 log "Sending TERM signal to all processes..."
-kill -TERM -1
-sleep 1
-log "Sending KILL signal to all processes..."
-kill -KILL -1
-
+{
+    kill -TERM -1
+    sleep 1
+    log "Sending KILL signal to all processes..."
+    kill -KILL -1
+}
 if [ "$1" = "poweroff" ];then
     poweroff -f
 elif [ "$1" = "reboot" ];then
