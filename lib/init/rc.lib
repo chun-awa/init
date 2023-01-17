@@ -18,7 +18,7 @@ log_error(){
 }
 random_seed(){
     case "${1}" in
-        save) dd count=1 bs=512 if=/dev/urandom of=/var/random_seed ;;
+        save) dd count=1 bs=512 if=/dev/urandom of=/var/random_seed > /dev/null 2>&1 ;;
         load) [ -e /var/random_seed ] && cat /var/random_seed > /dev/urandom ;;
     esac
 }
