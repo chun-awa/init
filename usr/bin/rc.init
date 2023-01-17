@@ -2,7 +2,13 @@
 . /lib/init/rc.lib
 . /etc/rc.conf
 
-echo "${YELLOW}Welcome to TinyLinux!${RESET}"
+if [ -e /etc/os-release ];then
+    eval "$(grep 'NAME=' /etc/os-release|head -n 1)"
+else
+    NAME=Linux
+fi
+
+echo "${YELLOW}Welcome to ${NAME}!${RESET}"
 log_info "Linux Kernel Version:$(uname -r)"
 
 log "Starting Services..."
